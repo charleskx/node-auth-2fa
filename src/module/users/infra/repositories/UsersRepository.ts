@@ -6,8 +6,12 @@ import { prisma } from '@/shared/infra/prisma'
 
 @injectable()
 class UsersRepository implements IUsersRepository {
+  findById(id: string): Promise<User | null> {
+    return prisma.user.findUnique({ where: { id } })
+  }
+
   public async findByEmail(email: string): Promise<User | null> {
-    return prisma.user.findFirst({ where: { email } })
+    return prisma.user.findUnique({ where: { email } })
   }
 
   public async create(data: Prisma.UserCreateInput): Promise<User> {

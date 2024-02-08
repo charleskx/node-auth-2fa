@@ -1,4 +1,5 @@
 @baseUrl = http://localhost:3333
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1MDc3ZDlhZS01ODUzLTQ5YmYtYWJhYi02ZDY5ZGJkMTAyM2IiLCJpYXQiOjE3MDc0MDgwMjUsImV4cCI6MTcwNzQwOTgyNX0.v9LHAwd9bcuO9Ne9Goxvbokt3lnaYyG7k-H7nr5ZaWM
 
 ### Check system health
 GET {{baseUrl}}/health
@@ -13,6 +14,11 @@ Content-Type: application/json
   "email": "johndoe@example.com",
   "password": "example"
 }
+
+### Get logged-in user data
+GET {{baseUrl}}/users/me
+Authorization: Bearer {{token}}
+Content-Type: application/json
 
 ### Login with credentials
 POST {{baseUrl}}/sessions
