@@ -1,12 +1,8 @@
 @baseUrl = http://localhost:3333
 
-# HEALTH
-
 ### Check system health
 GET {{baseUrl}}/health
 Content-Type: application/json
-
-# USERS
 
 ### Create users
 POST {{baseUrl}}/users
@@ -14,6 +10,15 @@ Content-Type: application/json
 
 {
   "name": "John Doe",
+  "email": "johndoe@example.com",
+  "password": "example"
+}
+
+### Login with credentials
+POST {{baseUrl}}/sessions
+Content-Type: application/json
+
+{
   "email": "johndoe@example.com",
   "password": "example"
 }
