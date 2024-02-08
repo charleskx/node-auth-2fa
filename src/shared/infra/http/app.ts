@@ -3,6 +3,8 @@ import fastify from 'fastify'
 import fastifyCors from '@fastify/cors'
 import { ZodError } from 'zod'
 
+import '@/shared/container'
+
 import { env } from '../env'
 import { routes } from './routes'
 import { AppError } from '@/shared/utility/AppError'

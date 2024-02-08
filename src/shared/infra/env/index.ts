@@ -7,6 +7,7 @@ const schema = z.object({
   JWT_SECRET: z.string(),
   PORT: z.coerce.number().default(3333),
   DATABASE_URL: z.string(),
+  HASH: z.coerce.number().default(6),
 })
 
 const _env = schema.safeParse(process.env)
