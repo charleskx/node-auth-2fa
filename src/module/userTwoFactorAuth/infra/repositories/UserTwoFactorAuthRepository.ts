@@ -18,7 +18,7 @@ class UserTwoFactorAuthRepository implements IUserTwoFactorAuthRepository {
   }
 
   public async validate(user: string): Promise<void> {
-    prisma.userTwoFactorAuth.update({
+    await prisma.userTwoFactorAuth.update({
       data: { validated: true, validated_at: new Date() },
       where: { user_id: user },
     })

@@ -7,4 +7,5 @@ export async function usersTwoFactorAuthRoutes(app: FastifyInstance) {
   app.addHook('onRequest', ensureLoggedIn)
 
   app.post('/', UserTwoFactorAuthController.create)
+  app.patch('/active', UserTwoFactorAuthController.active)
 }
