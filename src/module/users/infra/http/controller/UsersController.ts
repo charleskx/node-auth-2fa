@@ -11,7 +11,7 @@ class UsersController {
   ): Promise<FastifyReply> {
     const schema = z.object({
       name: z.string(),
-      email: z.string(),
+      email: z.string().email(),
       password: z.string().min(6),
     })
 
