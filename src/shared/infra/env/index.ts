@@ -8,6 +8,7 @@ const schema = z.object({
   PORT: z.coerce.number().default(3333),
   DATABASE_URL: z.string(),
   HASH: z.coerce.number().default(6),
+  APPLICATION_NAME: z.string(),
 })
 
 const _env = schema.safeParse(process.env)
