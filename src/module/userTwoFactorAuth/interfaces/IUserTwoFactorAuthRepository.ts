@@ -10,9 +10,15 @@ export interface IUpdateDTO {
   key: string
 }
 
+export interface IResetDTO {
+  user: string
+  key: string
+}
+
 export interface IUserTwoFactorAuthRepository {
   create(payload: ICreateDTO): Promise<UserTwoFactorAuth>
   findByUser(user: string): Promise<UserTwoFactorAuth | null>
   update(payload: IUpdateDTO): Promise<UserTwoFactorAuth>
   validate(user: string): Promise<void>
+  reset(payload: IResetDTO): Promise<UserTwoFactorAuth>
 }

@@ -3,6 +3,7 @@ import { container } from 'tsyringe'
 
 import { CreateUserTwoFactorAuth } from '@/module/userTwoFactorAuth/services/CreateUserTwoFactorAuth'
 import { ActiveUserTwoFactorAuth } from '@/module/userTwoFactorAuth/services/ActiveUserTwoFactorAuth'
+import { ResetUserTwoFactorAuth } from '@/module/userTwoFactorAuth/services/ResetUserTwoFactorAuth'
 
 class UserTwoFactorAuthController {
   static async create(
@@ -35,6 +36,21 @@ class UserTwoFactorAuthController {
     return reply
       .code(202)
       .send({ message: 'Authenticator successfully activated.' })
+  }
+
+  static async reset(
+    request: FastifyRequest,
+    reply: FastifyReply,
+  ): Promise<FastifyReply> {
+    const { sub: id } = request.user
+
+    const resetUserTwoFactorAuthService = container.resolve(
+      ResetUserTwoFactorAuth,
+    )
+
+    const url = await resetUserTwoFactorAuthService.handle(id)
+
+    return reply.code(202).send({ url })
   }
 }
 

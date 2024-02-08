@@ -42,3 +42,10 @@ Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {}
+
+### Reset Two Factor authentication
+PATCH {{baseUrl}}/sessions/two-factor/reset
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{}
