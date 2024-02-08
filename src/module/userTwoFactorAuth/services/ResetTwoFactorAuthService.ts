@@ -7,7 +7,7 @@ import { ITwoFactorProvider } from '@/shared/container/providers/TwoFactorProvid
 import { env } from '@/shared/infra/env'
 
 @injectable()
-class ResetUserTwoFactorAuth {
+class ResetTwoFactorAuthService {
   constructor(
     @inject('UserTwoFactorAuthRepository')
     private userTwoFactorRepository: IUserTwoFactorAuthRepository,
@@ -31,4 +31,4 @@ class ResetUserTwoFactorAuth {
   }
 }
 
-export { ResetUserTwoFactorAuth }
+export { ResetTwoFactorAuthService }

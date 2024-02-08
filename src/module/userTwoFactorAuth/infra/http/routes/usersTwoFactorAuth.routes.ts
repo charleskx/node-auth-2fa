@@ -9,4 +9,5 @@ export async function usersTwoFactorAuthRoutes(app: FastifyInstance) {
   app.post('/', UserTwoFactorAuthController.create)
   app.patch('/active', UserTwoFactorAuthController.active)
   app.patch('/reset', UserTwoFactorAuthController.reset)
+  app.post('/verify', UserTwoFactorAuthController.verify)
 }

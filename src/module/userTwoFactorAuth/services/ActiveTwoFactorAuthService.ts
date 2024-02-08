@@ -4,7 +4,7 @@ import { IUserTwoFactorAuthRepository } from '../interfaces/IUserTwoFactorAuthRe
 import { AppError } from '@/shared/utility/AppError'
 
 @injectable()
-class ActiveUserTwoFactorAuth {
+class ActiveTwoFactorAuthService {
   constructor(
     @inject('UserTwoFactorAuthRepository')
     private userTwoFactorRepository: IUserTwoFactorAuthRepository,
@@ -25,4 +25,4 @@ class ActiveUserTwoFactorAuth {
   }
 }
 
-export { ActiveUserTwoFactorAuth }
+export { ActiveTwoFactorAuthService }

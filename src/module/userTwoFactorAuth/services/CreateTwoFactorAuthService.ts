@@ -7,7 +7,7 @@ import { ITwoFactorProvider } from '@/shared/container/providers/TwoFactorProvid
 import { env } from '@/shared/infra/env'
 
 @injectable()
-class CreateUserTwoFactorAuth {
+class CreateTwoFactorAuthService {
   constructor(
     @inject('UserTwoFactorAuthRepository')
     private userTwoFactorRepository: IUserTwoFactorAuthRepository,
@@ -34,4 +34,4 @@ class CreateUserTwoFactorAuth {
   }
 }
 
-export { CreateUserTwoFactorAuth }
+export { CreateTwoFactorAuthService }

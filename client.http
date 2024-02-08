@@ -1,5 +1,5 @@
 @baseUrl = http://localhost:3333
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1MDc3ZDlhZS01ODUzLTQ5YmYtYWJhYi02ZDY5ZGJkMTAyM2IiLCJpYXQiOjE3MDc0MjUzMzksImV4cCI6MTcwNzQyNzEzOX0.Qd6iURax0fx4I6QhxFFH7n4hemRdXPGQogJutcgyYIY
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1MDc3ZDlhZS01ODUzLTQ5YmYtYWJhYi02ZDY5ZGJkMTAyM2IiLCJpYXQiOjE3MDc0Mjc4NjEsImV4cCI6MTcwNzQyOTY2MX0.lOCLZwXrVysAT1B-9SreLmBABaLitEtjiT3ZwIZFyXg
 
 ### Check system health
 GET {{baseUrl}}/health
@@ -49,3 +49,12 @@ Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {}
+
+### Verify Two Factor authentication
+POST {{baseUrl}}/sessions/two-factor/verify
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "token": "082236"
+}
