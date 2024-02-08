@@ -5,3 +5,15 @@
 ### Check system health
 GET {{baseUrl}}/health
 Content-Type: application/json
+
+# USERS
+
+### Create users
+POST {{baseUrl}}/users
+Content-Type: application/json
+
+{
+  "name": "John Doe",
+  "email": "johndoe@example.com",
+  "password": "example"
+}
