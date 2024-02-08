@@ -1,11 +1,11 @@
 import type { GeneratedSecret } from 'speakeasy'
-import { generateSecret, totp } from 'speakeasy'
+import * as speakeasy from 'speakeasy'
 
 import { ITwoFactorProvider, IVerify } from '../interfaces/ITwoFactorProvider'
 
 class SpeakeasyProvider implements ITwoFactorProvider {
   verify({ secret, token }: IVerify): boolean {
-    return totp.verify({
+    return speakeasy.totp.verify({
       secret,
       token,
       encoding: 'ascii',
@@ -13,7 +13,9 @@ class SpeakeasyProvider implements ITwoFactorProvider {
   }
 
   generate(name: string): GeneratedSecret {
-    return generateSecret({ name })
+    const code = speakeasy.generateSecret({ name })
+
+    return code
   }
 }
 

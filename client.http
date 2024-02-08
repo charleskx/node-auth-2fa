@@ -1,5 +1,5 @@
 @baseUrl = http://localhost:3333
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1MDc3ZDlhZS01ODUzLTQ5YmYtYWJhYi02ZDY5ZGJkMTAyM2IiLCJpYXQiOjE3MDc0MDgwMjUsImV4cCI6MTcwNzQwOTgyNX0.v9LHAwd9bcuO9Ne9Goxvbokt3lnaYyG7k-H7nr5ZaWM
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1MDc3ZDlhZS01ODUzLTQ5YmYtYWJhYi02ZDY5ZGJkMTAyM2IiLCJpYXQiOjE3MDc0MjM0NDcsImV4cCI6MTcwNzQyNTI0N30.aV1Ro5PJjIGNch8gV7DEhSQMmltXZzjs37Y0KBGiALU
 
 ### Check system health
 GET {{baseUrl}}/health
@@ -28,3 +28,10 @@ Content-Type: application/json
   "email": "johndoe@example.com",
   "password": "example"
 }
+
+### Create Two Factor authentication
+POST {{baseUrl}}/sessions/two-factor
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{}
