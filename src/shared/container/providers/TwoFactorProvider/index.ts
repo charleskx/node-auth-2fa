@@ -1,9 +1,9 @@
 import { container } from 'tsyringe'
 
 import { ITwoFactorProvider } from './interfaces/ITwoFactorProvider'
-import { SpeakeasyProvider } from './infra/SpeakeasyProvider'
+import { OTPLibProvider } from './infra/OTPLibProvider'
 
 container.registerSingleton<ITwoFactorProvider>(
   'TwoFactorProvider',
-  SpeakeasyProvider,
+  OTPLibProvider,
 )

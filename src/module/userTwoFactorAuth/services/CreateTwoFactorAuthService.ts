@@ -1,10 +1,10 @@
-/* eslint-disable camelcase */
 import { inject, injectable } from 'tsyringe'
 
 import { IUserTwoFactorAuthRepository } from '../interfaces/IUserTwoFactorAuthRepository'
 import { AppError } from '@/shared/utility/AppError'
 import { ITwoFactorProvider } from '@/shared/container/providers/TwoFactorProvider/interfaces/ITwoFactorProvider'
 import { env } from '@/shared/infra/env'
+import { IUsersRepository } from '@/module/users/interfaces/IUsersRepository'
 
 @injectable()
 class CreateTwoFactorAuthService {
@@ -12,25 +12,35 @@ class CreateTwoFactorAuthService {
     @inject('UserTwoFactorAuthRepository')
     private userTwoFactorRepository: IUserTwoFactorAuthRepository,
     @inject('TwoFactorProvider') private twoFactorProvider: ITwoFactorProvider,
+    @inject('UsersRepository') private usersRepository: IUsersRepository,
   ) {}
 
-  public async handle(user: string): Promise<string | undefined> {
-    const factorExists = await this.userTwoFactorRepository.findByUser(user)
+  public async handle(userUuid: string): Promise<string | undefined> {
+    const factorExists = await this.userTwoFactorRepository.findByUser(userUuid)
 
     if (factorExists) {
       throw new AppError('Authenticator already registered in the system')
     }
 
-    const { ascii, otpauth_url } = this.twoFactorProvider.generate(
-      env.APPLICATION_NAME,
-    )
+    const user = await this.usersRepository.findById(userUuid)
 
-    await this.userTwoFactorRepository.create({
-      key: ascii,
-      user,
+    if (!user) {
+      throw new AppError('User not found')
+    }
+
+    const secret = this.twoFactorProvider.generateSecret()
+    const otpAuthUrl = this.twoFactorProvider.generateOTPAuthUrl({
+      application: env.APPLICATION_NAME,
+      secret,
+      user: user.name,
     })
 
-    return otpauth_url
+    await this.userTwoFactorRepository.create({
+      key: secret,
+      user: userUuid,
+    })
+
+    return otpAuthUrl
   }
 }
 

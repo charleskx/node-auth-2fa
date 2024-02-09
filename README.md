@@ -1,7 +1,7 @@
 
 # Factor Authentication (2FA) with Node.js and Fastify
 
-This is a sample project that demonstrates how to implement two-factor authentication (2FA) in a Node.js application using the Fastify and the Speakeasy library.
+This is a sample project that demonstrates how to implement two-factor authentication (2FA) in a Node.js application using the Fastify and the otplib library.
 
 
 ## Prerequisites
@@ -97,25 +97,25 @@ The server will be running on http://localhost:3333 by default.
 #### Creates a relationship with a 2FA token
 
 ```http
-POST /sessions/two-factor
+  POST /sessions/two-factor
 ```
 
 #### Activates the 2FA token for use
 
 ```http
-PATCH /sessions/two-factor/active
+  PATCH /sessions/two-factor/active
 ```
 
 #### Validates the token entered by the user
 
 ```http
-POST /sessions/two-factor/verify
+  POST /sessions/two-factor/verify
 ```
 
 #### Resets the user's token and returns a new authentication URL
 
 ```http
-PATCH /sessions/two-factor/reset
+  PATCH /sessions/two-factor/reset
 ```
 
 

@@ -1,11 +1,16 @@
-import type { GeneratedSecret } from 'speakeasy'
-
 export interface IVerify {
   secret: string
   token: string
 }
 
+export interface IGenerateOTPAuthUrl {
+  user: string
+  application: string
+  secret: string
+}
+
 export interface ITwoFactorProvider {
-  generate(name: string): GeneratedSecret
+  generateSecret(): string
+  generateOTPAuthUrl(payload: IGenerateOTPAuthUrl): string
   verify(payload: IVerify): boolean
 }

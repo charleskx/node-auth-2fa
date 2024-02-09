@@ -1,5 +1,5 @@
 @baseUrl = http://localhost:3333
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1MDc3ZDlhZS01ODUzLTQ5YmYtYWJhYi02ZDY5ZGJkMTAyM2IiLCJpYXQiOjE3MDc0Mjc4NjEsImV4cCI6MTcwNzQyOTY2MX0.lOCLZwXrVysAT1B-9SreLmBABaLitEtjiT3ZwIZFyXg
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1MDc3ZDlhZS01ODUzLTQ5YmYtYWJhYi02ZDY5ZGJkMTAyM2IiLCJpYXQiOjE3MDc0ODg1OTksImV4cCI6MTcwNzQ5MDM5OX0.y8U1_hYQVQoK5ZqdiqZIrK48SJBriRE7sthUIefyNX0
 
 ### Check system health
 GET {{baseUrl}}/health
@@ -56,5 +56,5 @@ Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
-  "token": "364422"
+  "token": "937752"
 }
